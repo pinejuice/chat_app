@@ -85,3 +85,8 @@ main {
 .side_bar ul {
     margin: 5px;
 }
+
+ul #user_list {
+    list-style: square;
+    margin-left: 30px;
+}

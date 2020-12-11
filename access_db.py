@@ -15,10 +15,10 @@ def check_login(cur, user_id, login_pw):
 
 def select_talk_user_info(cur, user_id):
     # 自身以外のユーザー一覧の取得
-    SELECT_TALK_USER_INFO = f"""SELECT nick_name FROM user_tbl WHERE user_id != '{user_id}';"""
+    SELECT_TALK_USER_INFO = f"""SELECT user_id, nick_name FROM user_tbl WHERE user_id != '{user_id}';"""
     cur.execute(SELECT_TALK_USER_INFO)
     nick_name_list = cur.fetchall()
-    return len(nick_name_list[0]), nick_name_list[0]
+    return len(nick_name_list), nick_name_list
 
 def select_user_info(cur, user_id):
     # 自身のユーザー情報の取得

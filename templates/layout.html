@@ -29,7 +29,14 @@
     <main>
         <div class="side_bar" id="side_bar">
             <ul>
-                <li>個人一覧（{{ user_num }}）</li>
+                <li>
+                    <div class="user_list_top open" id="user_list_top">個人一覧（{{ user_num }}）</div>
+                    <ul id="user_list">
+                        {% for i in user_list: %}
+                            <li>{{ i[1] }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
                 <li>グループ一覧（）</li>
             </ul>
         </div>

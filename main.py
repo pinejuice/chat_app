@@ -50,6 +50,7 @@ async def top(req, resp):
         page_title='トップ',
         APPNAME=app_name,
         user_num=user_num,
+        user_list=user_list,
         icon=resp.session['icon']
     )
 
@@ -64,6 +65,7 @@ async def user_setting(req, resp):
         page_title='ユーザー設定',
         APPNAME=app_name,
         user_num=user_num,
+        user_list=user_list,
         user_id=user_id,
         nick_name=nick_name,
         icon=icon
@@ -91,7 +93,12 @@ async def user_setting_update(req, resp):
  
 @api.route('/about')
 async def about(req, resp):
-    resp.content = api.template('about.html', page_title=f'{app_name}について', APPNAME=app_name, icon=resp.session['icon'])
+    resp.content = api.template(
+        'about.html',
+        page_title=f'{app_name}について',
+        APPNAME=app_name,
+        icon=resp.session['icon']
+    )
 
 @api.route('/logout')
 async def logout(req, resp):
