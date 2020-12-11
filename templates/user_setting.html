@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- <script src="/static/js/user_setting.js"></script> -->
+<link rel="stylesheet" href="/static/css/user_setting.css">
+  <p><h2>ユーザー設定</h2></p>
+  <form action="/user-setting-update" method="post">
+    <table>
+      <tr>
+        <th>ユーザーID</th>
+        <td>{{ user_id }}</td>
+      </tr>
+      <tr>
+        <th>ニックネーム</th>
+        <td><input type="text" name="nick_name" id="nick_name" value="{{ nick_name }}"></td>
+      </tr>
+      <tr>
+        <th>アイコン</th>
+        <td>
+          <img id="user_info_icon" src="{{ '/static/img/account.png' if icon == None else icon }}" width="120" height="120">
+          <!-- <br>
+          <input type="file" name="user_info_icon" accept="image/*" id="input_user_icon"> -->
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="保存">
+  </form>
+{% endblock %}

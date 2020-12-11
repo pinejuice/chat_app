@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | {{ APPNAME }}</title>
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/js/layout.js"></script>
+    <link rel="stylesheet" href="/static/css/layout.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="icon"><a href="/top"><img src="/static/img/talk.png" width="40" height="40"><span>チャットーク</span></a></li>
+                <li class="submenu" id="submenu">
+                    <img id="user_icon" src="{{ '/static/img/account.png' if icon == None else icon }}" width="38" height="38"><span>▽</span>
+                </li>
+            </ul>
+        </nav>
+        <div class="submenu_info" id="submenu_info" style="display: none;">
+            <ul>
+                <li><a href="/user-setting">ユーザー設定</a></li>
+                <li><a href="/about">{{ APPNAME }}について</a></li>
+                <li><a href="/logout">ログアウト</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="side_bar" id="side_bar">
+            <ul>
+                <li>
+                    <div class="user_list_top open" id="user_list_top">個人一覧（{{ user_num }}）</div>
+                    <ul id="user_list">
+                        {% for i in user_list: %}
+                            <li>{{ i[1] }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>グループ一覧（）</li>
+            </ul>
+        </div>
+        <div class="main_content" id="main_content">
+            {% block content %}
+            <!-- ここにメインコンテンツを書く -->
+            {% endblock %}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | {{ APPNAME }}</title>
+</head>
+<body>
+    <form id="loginForm" action="/login" method="post">
+        <h1>ログイン認証</h1>
+        <label>ユーザーID:</label>
+        <input type="text" name="user_id" placeholder="ユーザーID" value="" required>
+        <br/>
+        <label>パスワード:</label>
+        <input type="password" name="password" placeholder="password" value="" required>
+        <br/><h2 style="color: red;">{{ errmessages }}</h2>
+        <br/>
+        <input type="submit" value="ログイン">
+    </form>
+      
+</body>
+</html>
