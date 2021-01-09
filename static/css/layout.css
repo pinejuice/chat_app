@@ -83,10 +83,17 @@ main {
 }
 
 .side_bar ul {
+    cursor: pointer;
     margin: 5px;
 }
 
 ul #user_list {
     list-style: square;
     margin-left: 30px;
+}
+
+#main_content {
+    width: -webkit-calc(100vw - 200px);
+    width: -moz-calc(100vw - 200px);
+    width: calc(100vw - 200px);
 }
