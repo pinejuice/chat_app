@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign-up | {{ APPNAME }}</title>
+</head>
+<body>
+    <form id="signUpForm" action="/sign_up" method="post">
+        <h1>アカウント作成</h1>
+        <label>ユーザーID:</label>
+        <input type="text" name="user_id" placeholder="ユーザーID" value="" required>
+        <br>
+        <label>ニックネーム:</label>
+        <input type="text" name="nick_name" placeholder="ニックネーム" value="" required>
+        <br>
+        <label>パスワード:</label>
+        <input type="password" name="password" placeholder="password" value="" required>
+        <br>
+        <label>パスワード（確認）:</label>
+        <input type="password" name="password_check" placeholder="password(確認)" value="" required>
+        <div id="error_message">{{ errmessages }}</div>
+        <br>
+        <input type="submit" value="アカウント発行">
+    </form>
+</body>
+</html>

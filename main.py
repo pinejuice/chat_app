@@ -40,6 +40,34 @@ class login():
         resp.session['icon'] = icon
         api.redirect(resp, '/top')
 
+@api.route('/sign_up')
+class login():
+    async def on_get(self, req, resp):
+        # getの場合
+        resp.content = api.template('sign_up.html', APPNAME=app_name)
+
+    async def on_post(self, req, resp):
+        # postの場合
+        data = await req.media()
+        user_id = data.get('user_id')
+        login_pw = data.get('password')
+        nick_name = data.get('nick_name')
+        user_exists = db.insert_user_info(cur, user_id, nick_name, login_pw)
+        if user_exists == True:
+            api.redirect(resp, '/created')
+        else:
+            message = "このユーザIDは現在使用できません。"
+            resp.content = api.template('sign_up', errmessages=message, APPNAME=app_name)
+            return
+
+@api.route('/created')
+async def top(req, resp):
+    resp.content = api.template(
+        'created.html',
+        page_title='アカウント発行完了',
+        APPNAME=app_name
+    )
+
 @api.route('/top')
 async def top(req, resp):
     # 必要情報の取得

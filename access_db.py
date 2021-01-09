@@ -30,3 +30,14 @@ def select_user_info(cur, user_id):
 def update_user_info(cur, user_id, nick_name):
     UPDATE_USER_INFO_NULL = f"""UPDATE user_tbl set nick_name = '{nick_name}' WHERE user_id = '{user_id}';"""
     cur.execute(UPDATE_USER_INFO_NULL)
+
+def insert_user_info(cur, user_id, nick_name, password):
+    SELECT_USER_ID = f"""SELECT EXISTS (SELECT user_id FROM user_tbl WHERE user_id = '{user_id}');"""
+    cur.execute(SELECT_USER_ID)
+    user_exists = cur.fetchall()
+    if user_exists[0][0] == True:
+        return False
+    else:
+        INSERT_USER_INFO = f"""INSERT INTO user_tbl (user_id, nick_name, login_pw, icon) VALUES ('{user_id}', '{nick_name}', '{password}', NULL);"""
+        cur.execute(INSERT_USER_INFO)
+        return True
