@@ -41,7 +41,7 @@ class login():
         api.redirect(resp, '/top')
 
 @api.route('/sign_up')
-class login():
+class sign_up():
     async def on_get(self, req, resp):
         # getの場合
         resp.content = api.template('sign_up.html', APPNAME=app_name)
@@ -76,6 +76,21 @@ async def top(req, resp):
     resp.content = api.template(
         'top.html',
         page_title='トップ',
+        APPNAME=app_name,
+        user_num=user_num,
+        user_list=user_list,
+        icon=resp.session['icon']
+    )
+
+@api.route("/chat/{who}")
+def chat(req, resp, *, who):
+    # 必要情報の取得
+    user_num, user_list = db.select_talk_user_info(cur, resp.session['user_id'])
+    conn.commit()
+    resp.content = api.template(
+        'chat.html',
+        who=who,
+        page_title='チャット',
         APPNAME=app_name,
         user_num=user_num,
         user_list=user_list,
