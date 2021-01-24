@@ -1,0 +1,30 @@
+#breadcrumbs {
+    background-color: #ffef01;
+}
+
+#talk {
+    padding: 5px;
+    font-size: 15px;
+}
+
+#talk_area {
+    width: calc(100% - 10px);
+    /* height: calc(100% - 10px - 40px); */
+    height: calc(100vh - 180px);
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+    overflow: scroll;
+}
+
+#edit_talk {
+    resize: none;
+    width: calc(100% - 10px);
+    height: 40px;
+}
+#submit_btn {
+    display: block;
+    font-size: 20px;
+    width: 60px;
+    height: 40px;
+    margin-left: auto;
+}
