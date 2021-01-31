@@ -83,7 +83,7 @@ async def top(req, resp):
     )
 
 @api.route("/chat/{who}")
-def chat(req, resp, *, who):
+async def chat(req, resp, *, who):
     # 必要情報の取得
     user_num, user_list = db.select_talk_user_info(cur, resp.session['user_id'])
     conn.commit()
@@ -157,3 +157,5 @@ if __name__ == '__main__':
     # cursorの生成
     cur = conn.cursor()
     api.run(port=8888)
+    cur.close()
+    conn.close()
